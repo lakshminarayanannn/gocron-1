@@ -87,8 +87,11 @@ func (j *Job) Do(jobFun interface{}, params ...interface{}) error {
 	}
 	fname := getFunctionName(jobFun)
 	j.funcs[fname] = jobFun
-	j.fparams[fname] = params
+	j.fparams[fname] = params[1:]
 	j.jobFunc = fname
+	j.tags = append(j.tags, params[0].(string))
+
+	fmt.Println(params[0], reflect.ValueOf(params).Kind())
 
 	now := time.Now().In(j.loc)
 	if !j.nextRun.After(now) {

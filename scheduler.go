@@ -123,7 +123,7 @@ func (s *Scheduler) RemoveByRef(j *Job) {
 	})
 }
 
-// RemoveByTag removes specific job j by tag
+// RemoveByTag removes specific job j by tag44
 func (s *Scheduler) RemoveByTag(t string) {
 	s.removeByCondition(func(someJob *Job) bool {
 		for _, a := range someJob.tags {
@@ -247,6 +247,9 @@ func Clear() {
 // Remove a specific job
 func Remove(j interface{}) {
 	defaultScheduler.Remove(j)
+}
+func RemoveRemoveByTag(tag string) {
+	defaultScheduler.RemoveByTag(tag)
 }
 
 // Scheduled checks if specific job j was already added
